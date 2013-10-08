@@ -3,11 +3,13 @@ package com.example.tipcalculator;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TipCalcActivity extends Activity {
 
@@ -24,11 +26,20 @@ public class TipCalcActivity extends Activity {
 		return true;
 	}
 	
-	@SuppressLint("DefaultLocale")
-	public void calcTip(View v) {
+	public boolean calcTip(View v) {
 		EditText edtTotal = (EditText) findViewById(R.id.edtTotal);
 		TextView tvTip = (TextView) findViewById(R.id.tvTip);
-		String strTotal = edtTotal.getText().toString().equals("") ? "0.0" : edtTotal.getText().toString();
+		
+		if (edtTotal.getText().toString().equals("")) {
+			Context context = getApplicationContext();
+			CharSequence text = "Please enter total amount first!";
+			int duration = Toast.LENGTH_SHORT;
+			Toast.makeText(context, text, duration).show();
+			
+			return false;
+		}
+		
+		String strTotal = edtTotal.getText().toString();
 		double dblTotal = Double.parseDouble(strTotal);
 		
 		double tip;
@@ -50,5 +61,7 @@ public class TipCalcActivity extends Activity {
 		tip *= dblTotal; 
 		String strTip = String.format("%.2f", tip);
 		tvTip.setText("Tip is:    $" + strTip);
+		
+		return true;
 	}
 }

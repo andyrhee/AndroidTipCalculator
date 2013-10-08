@@ -25,7 +25,7 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btn15pct"
         android:onClick="calcTip"
-        android:text="10%" />
+        android:text="@string/_10_" />
 
     <Button
         android:id="@+id/btn20pct"
@@ -35,7 +35,7 @@
         android:layout_alignBottom="@+id/btn15pct"
         android:layout_toRightOf="@+id/btn15pct"
         android:onClick="calcTip"
-        android:text="20%" />
+        android:text="@string/_20_" />
 
     <TextView
         android:id="@+id/tvTip"
@@ -44,7 +44,7 @@
         android:layout_below="@+id/btn15pct"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
-        android:text="Tip is:"
+        android:text="@string/Tip_is"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:ems="10"
-        android:hint="Enter Total"
+        android:hint="@string/EnterTotalAmount"
         android:inputType="numberDecimal" >
 
         <requestFocus />
